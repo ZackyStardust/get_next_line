@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:37:26 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 13:41:20 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/07 13:43:53 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ char *get_next_line(int fd)
 	char		*ret;
 	size_t		i;
 
-//		** THE READ **
-//		This read is necessary 		|
-//		to check if the file is 	|
-//		exists or is valid. The		|
-//		NULL (0) in the second		|
-//		slot means that everything	|
-//		that was read will not be	|
-//		copied to anything. The 0	|	** FD CHECK **
-//		at the third slot means		|	The minimum value	|
-//		nothing should be read.		|	for a file descrip-	|
-//		A normal return should		|	tor is 0. -1 means	|  ** BUFFER_SIZE **
-//		be 0 (nothing was read).	|	an error. The max-	|	 ** CHECK **
-//		A return of -1 means that	|	imum value of a		|	A buffer of 0
-//		the function was not able	|	file descriptor is	|	or lower means
-//		to read anything at all 	|	1024. Anything 		|	nothing will be	
-//		even if it wanted to.		|	greater is invalid.	|	read each time.	
+//  ** THE READ **
+//  This read is necessary      |
+//  to check if the file is     |
+//  exists or is valid. The     |
+//  NULL (0) in the second      |
+//  slot means that everything  |
+//  that was read will not be   |
+//  copied to anything. The 0   |   ** FD CHECK **
+//  at the third slot means     |   The minimum value	|
+//  nothing should be read.     |   for a file descrip-	|
+//  A normal return should      |   tor is 0. -1 means	|   ** BUFFER_SIZE **
+//  be 0 (nothing was read).    |   an error. The max-	|     ** CHECK **
+//  A return of -1 means that   |   imum value of a		|    A buffer of 0
+//  the function was not able   |   file descriptor is	|    or lower means
+//  to read anything at all     |   1024. Anything 		|    nothing will be	
+//  even if it wanted to.       |   greater is invalid.	|    read each time.	
 	if ((read(fd, NULL, 0) == -1) || (fd < 0 || fd > 1024) || BUFFER_SIZE <= 0)
 		return ERROR; // My ERROR is defined as (0) in my .h. It is just my aesthetic preference.
 	i = 1;
@@ -92,11 +92,11 @@ static char *feed_storage(char **storage, char **buf, size_t i)
 	}
 	(*buf)[i] = '\0';	// We will conduct a reading of the buffer string in the next line, so we need to null-terminate it.
 	tmp = ft_strchr(*buf, '\n');	// We will try to find a newline inside the buffer and make tmp point to it.
-	if (tmp)			//	If there is a newline in the buffer we call
-					//	the valid_buffer function, sending the storage,
-					//	the buffer and the address of tmp - the initial address
-					//	of buf (i.e. the length of the string inside the buffer).
-					//	+1 for the null-termination.
+	if (tmp)			// If there is a newline in the buffer we call
+					// the valid_buffer function, sending the storage,
+					// the buffer and the address of tmp - the initial address
+					// of buf (i.e. the length of the string inside the buffer).
+					// +1 for the null-termination.
 		ret = valid_buffer(storage, buf, (tmp - *buf) + 1);
 	else						//	If there is not a newline in the buffer we concatenate it
 	{						//	with the storage and send it to the tmp pointer.
