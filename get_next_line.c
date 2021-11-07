@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:37:26 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 13:50:17 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/07 13:54:10 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ static char *feed_storage(char **storage, char **buf, size_t i)
 	(*buf)[i] = '\0';	// We will conduct a reading of the buffer string in the next line, so we need to null-terminate it.
 	tmp = ft_strchr(*buf, '\n');   // We will try to find a newline inside the buffer and make tmp point to it.
 	if (tmp)                       // If there is a newline in the buffer we call
-                                   // the valid_buffer function, sending the storage,
-                                   // the buffer and the address of tmp - the initial address
-                                   // of buf (i.e. the length of the string inside the buffer).
-                                   // +1 for the null-termination.
+//                                 // the valid_buffer function, sending the storage,
+//                                 // the buffer and the address of tmp - the initial address
+//                                 // of buf (i.e. the length of the string inside the buffer).
+//                                 // +1 for the null-termination.
 		ret = valid_buffer(storage, buf, (tmp - *buf) + 1);
 	else                    // If there is not a newline in the buffer we concatenate it
 	{                       // with the storage and send it to the tmp pointer.
@@ -154,7 +154,7 @@ static char	*valid_storage(char **storage, size_t size)
 		return ERROR;
 	i = -1;                     // In order to not use too many lines, we may start the index with -1
 	while (++i != size)         // so we can increase it first, then compare to the size.
-                                // And while this loop condition is valid, we feed the return
+//                              // And while this loop condition is valid, we feed the return
 		ret[i] = (*storage)[i]; // with the content from the storage.
 	ret[i] = '\0';
 	tmp = ft_strdup(*storage + i);  // We feed the temporary pointer with a string	
@@ -166,7 +166,7 @@ static char	*valid_storage(char **storage, size_t size)
 /* ---------------------------------------------------- */
 /*  Now for a great question: why in some functions     */
 /*  the pointer parameters are ** and not simply *?     */
-/*  Surely only one	asterisk would be enough, right?    */
+/*  Surely only one asterisk would be enough, right?    */
 /*  And you are correct, my inquisitive friend.         */
 /*  However, this way our file is ready for the bonus!  */
 /*  Check out the _bonus files to see how it works.     */
