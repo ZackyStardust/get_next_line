@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:13:02 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/06 18:33:38 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/06 21:01:38 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 
 # define ERROR (0)
-# define BUFFER_SIZE 42
 
 /* Main */
 
