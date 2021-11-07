@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:37:26 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 12:03:50 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/07 13:36:49 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,24 +84,24 @@ static char *feed_storage(char **storage, char **buf, size_t i)
 	if (i <= 0)	// If the i <= zero, it means that we either reached the end of the file or the file is invalid somehow.
 	{
 		if (i == 0 && *storage)	//	As stated before, if it is zero, we reached the end,
-		{						//	so we simply redirect the ret pointer to point to storage,
+		{			//	so we simply redirect the ret pointer to point to storage,
 			ret = (*storage);	//	and the storage pointer to NULL. We also verify if there is
 			*storage = NULL;	//	anything in Storage, because it might be empty if the file
-		}						//	is valid but empty.
+		}			//	is valid but empty.
 		return (ret);
 	}
 	(*buf)[i] = '\0';	// We will conduct a reading of the buffer string in the next line, so we need to null-terminate it.
 	tmp = ft_strchr(*buf, '\n');	// We will try to find a newline inside the buffer and make tmp point to it.
-	if (tmp)	//	If there is a newline in the buffer we call
+	if (tmp)		//	If there is a newline in the buffer we call
 				//	the valid_buffer function, sending the storage,
 				//	the buffer and the address of tmp - the initial address
 				//	of buf (i.e. the length of the string inside the buffer).
 				//	+1 for the null-termination.
 		ret = valid_buffer(storage, buf, (tmp - *buf) + 1);
-	else									//	If there is not a newline in the buffer we concatenate it
-	{										// If there is not a newline in the buffer we concatenate it
+	else						//	If there is not a newline in the buffer we concatenate it
+	{						//	with the storage and send it to the tmp pointer.
 		tmp = ft_strjoin(*storage, *buf);	// The ret will be returned as NULL and the while in
-		if (*storage)						// get_next_line will trigger again.
+		if (*storage)				// get_next_line will trigger again.
 			free(*storage);
 		*storage = tmp;
 	}
@@ -136,38 +136,38 @@ static char *valid_buffer(char **storage, char **buf, size_t buflen)
 }
 
 static char	*valid_storage(char **storage, size_t size)
-// This is the simplest of the situations. If there is a newline			//
-// inside the storage, it means we don't even need to feed the buf			//
-// with content from the file. We just need to use it to mark the			//
-// exact address of the newline inside the storage string.					//
-// Then, we simply pick everything from the storage up to the				//
+// This is the simplest of the situations. If there is a newline		//
+// inside the storage, it means we don't even need to feed the buf		//
+// with content from the file. We just need to use it to mark the		//
+// exact address of the newline inside the storage string.			//
+// Then, we simply pick everything from the storage up to the			//
 // newline, feed it to the ret, clean the storage of it and send it back.	//
 {
 	char *tmp;
 	char *ret;
 	size_t i;
 
-	if (size < 0)		//	If the size (address of the newline - the initial address of storage)
-		return ERROR;	//	is less than zero, something went wrong. Abort, abort!
+	if (size < 0)		// If the size (address of the newline - the initial address of storage)
+		return ERROR;	// is less than zero, something went wrong. Abort, abort!
 	ret = malloc(sizeof(char) * (size + 1));
 	if (!ret)
 		return ERROR;
-	i = -1; 					// In order to not use too many lines, we may start the index with -1
-	while (++i != size) 		//	so we can increase it first, then compare to the size.
-								//	And while this loop condition is valid, we feed the return
-		ret[i] = (*storage)[i];	//	with the content from the storage.
+	i = -1; 			// In order to not use too many lines, we may start the index with -1
+	while (++i != size) 		// so we can increase it first, then compare to the size.
+					// And while this loop condition is valid, we feed the return
+		ret[i] = (*storage)[i];	// with the content from the storage.
 	ret[i] = '\0';
-	tmp = ft_strdup(*storage + i);	//	We feed the temporary pointer with a string	
+	tmp = ft_strdup(*storage + i);			//	We feed the temporary pointer with a string	
 	free (*storage);				//	duplication using storage, but only its address
 	(*storage) = tmp;				//	_after_ the newline. Then we clean it and make
 	return (ret);					//	the storage point to the tmp string.
 }
 
-//	/	/	/	/	/	/	/	/	/	/	/	/	/	//
+// / / / / / / / / / / / / /  / / / / / / / / / / / / / //
 //	Now for a great question: why in some functions		//
 //	the pointer parameters are ** and not simply *?		//
 //	Surely only one	asterisk would be enough, right?	//
 //	And you are correct, my inquisitive friend.			//
 //	However, this way our file is ready for the bonus!	//
 //	Check out the _bonus files to see how it works.		//
-//	/	/	/	/	/	/	/	/	/	/	/	/	/	//
+// / / / / / / / / / / / / /  / / / / / / / / / / / / / //
