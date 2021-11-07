@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:37:26 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 12:04:35 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/07 12:09:48 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,3 +114,4 @@ static char	*valid_storage(char **storage, size_t size)
 	free (*storage);
 	(*storage) = tmp;
 	return (ret);
+}
