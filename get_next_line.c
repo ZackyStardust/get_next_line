@@ -6,7 +6,7 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 16:37:26 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 11:47:35 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/07 12:03:50 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,3 +162,12 @@ static char	*valid_storage(char **storage, size_t size)
 	(*storage) = tmp;				//	_after_ the newline. Then we clean it and make
 	return (ret);					//	the storage point to the tmp string.
 }
+
+//	/	/	/	/	/	/	/	/	/	/	/	/	/	//
+//	Now for a great question: why in some functions		//
+//	the pointer parameters are ** and not simply *?		//
+//	Surely only one	asterisk would be enough, right?	//
+//	And you are correct, my inquisitive friend.			//
+//	However, this way our file is ready for the bonus!	//
+//	Check out the _bonus files to see how it works.		//
+//	/	/	/	/	/	/	/	/	/	/	/	/	/	//

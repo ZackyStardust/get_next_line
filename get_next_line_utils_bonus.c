@@ -6,11 +6,11 @@
 /*   By: fpereira <fpereira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 13:37:25 by fpereira          #+#    #+#             */
-/*   Updated: 2021/11/07 11:58:40 by fpereira         ###   ########.fr       */
+/*   Updated: 2021/11/06 21:35:25 by fpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*ft_strdup(const char *s)
 {
